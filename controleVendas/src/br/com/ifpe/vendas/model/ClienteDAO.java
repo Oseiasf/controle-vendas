@@ -24,27 +24,6 @@ public class ClienteDAO {
 		}
 	}
 
-	public void inserir(Cliente cliente) {
-
-		String sql = "INSERT INTO cliente (codigo, nome, cpf, endereco_cobranca, email, senha) VALUES (?,?,?,?,?,?)";
-		PreparedStatement stmt;
-		try {
-			stmt = connection.prepareStatement(sql);
-
-			stmt.setInt(1, cliente.getCodigo());
-			stmt.setString(2, cliente.getNome());
-			stmt.setString(3, cliente.getCpf());
-			stmt.setString(4, cliente.getEnderecoCobranca());
-			stmt.setString(5, cliente.getEmail());
-			stmt.setString(6, cliente.getSenha());
-
-			stmt.execute();
-			connection.close();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	public List<Cliente> listar() {
 		try {
 			List<Cliente> listaCliente = new ArrayList<Cliente>();
