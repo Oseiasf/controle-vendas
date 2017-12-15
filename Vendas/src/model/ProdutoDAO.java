@@ -1,4 +1,4 @@
-package util;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entidades.Contato;
+
 
 /**
  * @author Roberto Alencar
@@ -27,15 +27,15 @@ public class ProdutoDao {
 
 	public void inserir(Produto produto) {
 
-		String sql = "INSERT INTO produto (codigo_produto, unidade, descricao_produto,val_unit, ) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO produto (codigo, nome, preco) VALUES (?,?,?)";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
 
-			stmt.setInt(1, produto.getCodigoProduto());
-			stmt.setInt(2, produto.getUnidade());
-			stmt.setString(3, produto.getDescricaoProduto());
-			stmt.setDouble(4, produto.getValUnit());
+			stmt.setInt(1, produto.getCodigo());
+			stmt.setString(2, produto.getNome());
+			
+			stmt.setDouble(3, produto.getPreco());
 
 			stmt.execute();
 			connection.close();
