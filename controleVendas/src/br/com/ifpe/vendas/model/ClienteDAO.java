@@ -24,6 +24,7 @@ public class ClienteDAO {
 		}
 	}
 
+
 	public List<Cliente> listar() {
 		try {
 			List<Cliente> listaCliente = new ArrayList<Cliente>();
@@ -32,15 +33,44 @@ public class ClienteDAO {
 			while (rs.next()) {
 				Cliente cliente = new Cliente();
 				cliente.setNome(rs.getString("nome"));
+				
 
 				listaCliente.add(cliente);
 			}
 			stmt.execute();
 			connection.close();
 			return listaCliente;
+			
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+
+	}
+	
+	public Cliente pegarId(Integer codigo) {
+		
+		try {
+			PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM cliente WHERE id = ?");
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()){
+				Cliente cliente = new Cliente();
+			stmt.setInt(1, codigo);
+			}
+
+			stmt.execute();
+			connection.close();
+			
+			stmt.execute();
+			connection.close();
+			
+			return cliente;
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		
 	}
 
 }

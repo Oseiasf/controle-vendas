@@ -2,7 +2,7 @@ package br.com.ifpe.vendas.model;
 
 public class Cliente {
 
-	private Integer codigo;
+	private int codigo;
 	private String nome;
 	private String cpf;
 	private Endereco enderecoCobranca;
@@ -20,10 +20,11 @@ public class Cliente {
 		this.email = email;
 		this.senha = senha;
 	}
-	public Integer getCodigo() {
+	
+	public int getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	public String getNome() {

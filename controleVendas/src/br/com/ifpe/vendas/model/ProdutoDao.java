@@ -24,7 +24,7 @@ public class ProdutoDao {
 		}
 	}
 
-	public void inserir(Produto produto) {
+	public void salvar(Produto produto) {
 
 		String sql = "INSERT INTO produto (codigo, nome, preco) VALUES (?,?,?)";
 		PreparedStatement stmt;
