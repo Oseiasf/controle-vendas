@@ -1,0 +1,42 @@
+create database controle_vendas;
+use controle_vendas;
+
+create table cliente(
+
+codigo int auto_increment primary key,
+nome varchar(30) not null,
+cpf varchar(11) unique key not null,
+endereco_cobranca varchar(60) not null,
+email varchar(45) not null,
+Senha varchar(18) not null
+);
+
+create table produto(
+
+codigo int auto_increment primary key,
+nome varchar(30) not null,
+preco decimal not null
+);
+
+create table venda(
+
+codigo int auto_increment primary key,
+cod_cliente int not null,
+total_venda decimal not null,
+data_pedido timestamp not null,
+situacao char not null,
+endereco_entrega varchar(60) not null,
+tipo_pagamento char not null,
+foreign key (cod_cliente) references cliente(codigo)
+);
+
+create table item_venda (
+
+codigo int auto_increment primary key,
+cod_venda int not null,
+cod_produto int not null,
+quantidade int not null,
+foreign key (cod_venda) references venda(codigo),
+foreign key (cod_produto) references produto(codigo)
+);
+
